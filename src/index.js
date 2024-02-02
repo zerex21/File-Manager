@@ -6,21 +6,34 @@ import {
     homedir
 } from 'os'
 
+
 import process from 'node:process';
 
 import {
     showCurrDirectory
 } from './modules/currDirectory.js';
 
+import {
+    lstat
+} from 'fs';
+
 import * as readline from 'node:readline';
+import {
+    resolve
+} from 'path';
+import {
+    list
+} from './modules/ls.js';
+
+
 
 const project = async () => {
-
+    /* list() */
     const userName = getUserName()
-    const currDir = showCurrDirectory;
+    const textCurrDir = showCurrDirectory;
 
     console.log(`Welcome to the File Manager, ${userName}!`);
-    console.log(currDir(homedir()))
+    console.log(textCurrDir(homedir()))
 
 
     const rl = readline.createInterface({
@@ -39,11 +52,26 @@ const project = async () => {
         }
     });
 
+    /******************** */
+
+
+
+
+    // Write your code here
+
+
+    /************************************ */
     rl.on('line', text => {
         if (text === '.exit') {
             /* text = '' */
             goodbyeUser()
             process.exit();
+        }
+        if (text === 'ls') {
+            list()
+            /* res.then(function (data) {
+                console.log(data)
+            }) */
 
         }
     })
