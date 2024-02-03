@@ -25,6 +25,7 @@ import {
     handleInputs
 } from './modules/ls.js';
 import { cat } from './modules/cat.js';
+import { add } from './modules/add.js';
 
 
 
@@ -77,6 +78,9 @@ const project = async () => {
         }
         if (oper === 'cat') {
             cat(`/Users/zerex/Desktop/Node/index.html`)
+        }
+        if (oper === 'add') {
+            add(`/Users/zerex/Desktop/Node/xxx.html`)
         }
     })
 
