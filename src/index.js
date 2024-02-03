@@ -33,6 +33,7 @@ import { copyAndRemove } from './modules/copyAndRemove.js';
 import { eol } from './modules/oel.js';
 import { getCpus } from './modules/cpus.js';
 import { getArch } from './modules/architecture.js';
+import { calculateHash } from './modules/hash.js';
 
 
 
@@ -115,6 +116,9 @@ const project = async () => {
         }
         if (oper === 'os' && pathOne === '--architecture') {
             console.log(getArch())
+        }
+        if (oper === 'hash' ) {
+            calculateHash(`/Users/zerex/Desktop/111.html`)
         }
 
     })
