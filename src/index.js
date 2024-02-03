@@ -24,6 +24,7 @@ import {
 import {
     handleInputs
 } from './modules/ls.js';
+import { cat } from './modules/cat.js';
 
 
 
@@ -62,18 +63,20 @@ const project = async () => {
 
     /************************************ */
     rl.on('line', text => {
-        if (text === '.exit') {
+
+        let [oper, path] = text.split(' ')
+        console.log('oper:', oper, 'path:', path)
+        if (oper === '.exit') {
             /* text = '' */
             goodbyeUser()
             process.exit();
         }
-        if (text === 'ls') {
+        if (oper === 'ls') {
             let res = (handleInputs)
             res()
-            /* res.then(function (data) {
-                console.log(data)
-            }) */
-
+        }
+        if (oper === 'cat') {
+            cat(`/Users/zerex/Desktop/Node/index.html`)
         }
     })
 
