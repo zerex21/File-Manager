@@ -26,6 +26,7 @@ import {
 } from './modules/ls.js';
 import { cat } from './modules/cat.js';
 import { add } from './modules/add.js';
+import { rename } from './modules/rename.js';
 
 
 
@@ -65,8 +66,8 @@ const project = async () => {
     /************************************ */
     rl.on('line', text => {
 
-        let [oper, path] = text.split(' ')
-        console.log('oper:', oper, 'path:', path)
+        let [oper, pathOne, pathTwo] = text.split(' ')
+       // console.log('oper:', oper, 'path:', path)
         if (oper === '.exit') {
             /* text = '' */
             goodbyeUser()
@@ -81,6 +82,9 @@ const project = async () => {
         }
         if (oper === 'add') {
             add(`/Users/zerex/Desktop/Node/xxx.html`)
+        }
+        if (oper === 'rm') {
+            rename(`/Users/zerex/Desktop/Node/xxx.html`,`/Users/zerex/Desktop/Node/111.html`)
         }
     })
 
