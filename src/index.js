@@ -22,7 +22,7 @@ import {
     resolve
 } from 'path';
 import {
-    list
+    handleInputs
 } from './modules/ls.js';
 
 
@@ -68,7 +68,8 @@ const project = async () => {
             process.exit();
         }
         if (text === 'ls') {
-            list()
+            let res = (handleInputs)
+            res()()
             /* res.then(function (data) {
                 console.log(data)
             }) */
