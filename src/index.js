@@ -27,6 +27,7 @@ import {
 import { cat } from './modules/cat.js';
 import { add } from './modules/add.js';
 import { rename } from './modules/rename.js';
+import { copy } from './modules/copy.js';
 
 
 
@@ -85,6 +86,9 @@ const project = async () => {
         }
         if (oper === 'rm') {
             rename(`/Users/zerex/Desktop/Node/xxx.html`,`/Users/zerex/Desktop/Node/111.html`)
+        }
+        if (oper === 'cp') {
+            copy(`/Users/zerex/Desktop/Node/111.html`,`/Users/zerex/Desktop/111.html`)
         }
     })
 
