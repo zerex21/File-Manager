@@ -69,7 +69,7 @@ const project = async () => {
         }
         if (text === 'ls') {
             let res = (handleInputs)
-            res()()
+            res()
             /* res.then(function (data) {
                 console.log(data)
             }) */
