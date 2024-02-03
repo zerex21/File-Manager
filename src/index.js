@@ -34,6 +34,8 @@ import { eol } from './modules/oel.js';
 import { getCpus } from './modules/cpus.js';
 import { getArch } from './modules/architecture.js';
 import { calculateHash } from './modules/hash.js';
+import { compressFile } from './modules/compress.js';
+import { decompressFile } from './modules/decompress.js';
 
 
 
@@ -119,6 +121,13 @@ const project = async () => {
         }
         if (oper === 'hash' ) {
             calculateHash(`/Users/zerex/Desktop/111.html`)
+        }
+        if (oper === 'compress' ) {
+            compressFile(`/Users/zerex/Desktop/111.html`, `/Users/zerex/Desktop/111.br`)
+
+        }
+        if (oper === 'decompress' ) {
+            decompressFile(`/Users/zerex/Desktop/111.br`,`/Users/zerex/Desktop/111.html`)
         }
 
     })
