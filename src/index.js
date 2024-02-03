@@ -29,6 +29,7 @@ import { add } from './modules/add.js';
 import { rename } from './modules/rename.js';
 import { copy } from './modules/copy.js';
 import { remove } from './modules/remove.js';
+import { copyAndRemove } from './modules/copyAndRemove.js';
 
 
 
@@ -90,6 +91,9 @@ const project = async () => {
         }
         if (oper === 'cp') {
             copy(`/Users/zerex/Desktop/Node/111.html`,`/Users/zerex/Desktop/111.html`)
+        }
+        if (oper === 'mv') {
+            copyAndRemove(`/Users/zerex/Desktop/Node/111.html`,`/Users/zerex/Desktop/111.html`)
         }
         if (oper === 'rm') {
             remove(`/Users/zerex/Desktop/111.html`)
