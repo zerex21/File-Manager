@@ -102,6 +102,12 @@ const project = async () => {
         if (oper === 'os' && pathOne === '--EOL') {
             eol()
         }
+        if (oper === 'os' && pathOne === '--homedir') {
+            console.log(homedir())
+        }
+        if (oper === 'os' && pathOne === '--username') {
+            console.log(getUserName())
+        }
     })
 
 
