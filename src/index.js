@@ -31,6 +31,7 @@ import { copy } from './modules/copy.js';
 import { remove } from './modules/remove.js';
 import { copyAndRemove } from './modules/copyAndRemove.js';
 import { eol } from './modules/oel.js';
+import { getCpus } from './modules/cpus.js';
 
 
 
@@ -101,6 +102,9 @@ const project = async () => {
         }
         if (oper === 'os' && pathOne === '--EOL') {
             eol()
+        }
+        if (oper === 'os' && pathOne === '--cpus') {
+            getCpus()
         }
         if (oper === 'os' && pathOne === '--homedir') {
             console.log(homedir())
