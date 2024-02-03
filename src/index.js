@@ -32,6 +32,7 @@ import { remove } from './modules/remove.js';
 import { copyAndRemove } from './modules/copyAndRemove.js';
 import { eol } from './modules/oel.js';
 import { getCpus } from './modules/cpus.js';
+import { getArch } from './modules/architecture.js';
 
 
 
@@ -112,6 +113,10 @@ const project = async () => {
         if (oper === 'os' && pathOne === '--username') {
             console.log(getUserName())
         }
+        if (oper === 'os' && pathOne === '--architecture') {
+            console.log(getArch())
+        }
+
     })
 
 
