@@ -30,6 +30,7 @@ import { rename } from './modules/rename.js';
 import { copy } from './modules/copy.js';
 import { remove } from './modules/remove.js';
 import { copyAndRemove } from './modules/copyAndRemove.js';
+import { eol } from './modules/oel.js';
 
 
 
@@ -97,6 +98,9 @@ const project = async () => {
         }
         if (oper === 'rm') {
             remove(`/Users/zerex/Desktop/111.html`)
+        }
+        if (oper === 'os' && pathOne === '--EOL') {
+            eol()
         }
     })
 
