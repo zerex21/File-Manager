@@ -6,7 +6,7 @@ import {
 export const rename = async (pathOne, pathTwo) => {
 
     renameFile(pathOne, pathTwo, (err) => {
-        if (err) throw new Error("FS operation failed");
+        if (err) console.error(("FS operation failed"));
     })
 
 };

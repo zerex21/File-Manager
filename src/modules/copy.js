@@ -9,6 +9,6 @@ export const copy = async (pathOne, pathTwo) => {
         force: false,
         errorOnExist: true
     }, (err) => {
-        if (err) throw new Error("FS operation failed");
+        if (err) console.error(("FS operation failed"));
     });
 };

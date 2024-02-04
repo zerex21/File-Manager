@@ -23,7 +23,7 @@ let myArr = []
 const getPath = (myPathFile) => {
     return new Promise(async (resolve, reject) => {
         readdir(myPathFile, async (err, files) => {
-            if (err) throw new Error("FS operation failed");
+            if (err) console.error(("FS operation failed"));
             resolve(files)
         })
     })

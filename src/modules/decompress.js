@@ -16,8 +16,10 @@ export let decompressFile = async (pathOne, pathTwo) => {
 
     const brotli = createBrotliDecompress();
 
+    if (!readStream) return console.error(("FS operation failed"));
+
     const stream = pipeline(readStream, brotli, writeStream, (err) => {
-        if (err) throw err
+        if (err) console.error(("FS operation failed"));
     })
 
     stream.on('finish', () => {

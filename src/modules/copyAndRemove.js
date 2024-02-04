@@ -14,10 +14,10 @@ export const copyAndRemove = async (pathOne, pathTwo) => {
         force: false,
         errorOnExist: true
     }, (err) => {
-        if (err) throw new Error("FS operation failed");
+        if (err) console.error(("FS operation failed"));
 
         unlink(pathOne, (err) => {
-            if (err) throw new Error("FS operation failed");
+            if (err) console.error(("FS operation failed"));
         })
 
     });

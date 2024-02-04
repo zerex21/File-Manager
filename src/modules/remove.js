@@ -4,6 +4,6 @@ import {
 
 export const remove = async (fileDelete) => {
     unlink(fileDelete, (err) => {
-        if (err) throw new Error("FS operation failed");
+        if (err) console.error(("FS operation failed"));
     })
 };

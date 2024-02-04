@@ -53,17 +53,19 @@ import {
 import {
     decompressFile
 } from './modules/decompress.js';
-
-
+import {
+    moveUpDir
+} from './modules/navigation.js';
 
 const project = async () => {
+    let asd = true
 
     let currDirectory = homedir()
     const userName = getUserName()
-    const textCurrDir = showCurrDirectory;
+    /* const textCurrDir = showCurrDirectory; */
 
     console.log(`Welcome to the File Manager, ${userName}!`);
-    console.log(textCurrDir(currDirectory))
+    console.log(showCurrDirectory(currDirectory))
 
 
     const rl = readline.createInterface({
@@ -77,83 +79,149 @@ const project = async () => {
 
     process.openStdin().on('keypress', function (chunk, key) {
         if (key && key.name === 'c' && key.ctrl || chunk == '.exit') {
+            asd = false
             goodbyeUser()
             process.exit();
         }
     });
 
+
+    /* while (asd) { */
     rl.on('line', text => {
 
         let [oper, pathOne, pathTwo] = text.split(' ')
+
+
+
+
+
+        if (oper === 'up') {
+            currDirectory = moveUpDir(currDirectory)
+            showCurrDirectory(currDirectory)
+        }
+
+        if (oper === 'cd') {
+
+        }
+
+
+
+
+
+
+
         if (oper === '.exit') {
+            asd = false
             goodbyeUser()
             process.exit();
         }
         if (oper === 'ls') {
             let res = (handleInputs)
-            /* console.log('pathOne', pathOne) */
             res(currDirectory)
             setTimeout(() => {
-                console.log(textCurrDir(currDirectory))
+                showCurrDirectory(currDirectory)
             }, 10)
         }
         if (oper === 'cat') {
-            cat(pathOne)
-            console.log(textCurrDir(currDirectory))
+            if (!pathOne) {
+                console.error(("FS operation failed"))
+            } else {
+                cat(pathOne)
+                showCurrDirectory(currDirectory)
+            }
         }
         if (oper === 'add') {
-            add(pathOne)
-            console.log(textCurrDir(currDirectory))
+            if (!pathOne) {
+                console.error(("FS operation failed"))
+            } else {
+                add(pathOne)
+                showCurrDirectory(currDirectory)
+            }
         }
         if (oper === 'rn') {
-            rename(pathOne, pathTwo)
-            console.log(textCurrDir(currDirectory))
+            if (!pathOne && !pathTwo) {
+                console.error(("FS operation failed"))
+            } else {
+                rename(pathOne, pathTwo)
+                showCurrDirectory(currDirectory)
+            }
         }
         if (oper === 'cp') {
-            copy(pathOne, pathTwo)
-            console.log(textCurrDir(currDirectory))
+            if (!pathOne && !pathTwo) {
+                console.error(("FS operation failed"))
+            } else {
+                copy(pathOne, pathTwo)
+                showCurrDirectory(currDirectory)
+            }
         }
         if (oper === 'mv') {
-            copyAndRemove(pathOne, pathTwo)
-            console.log(textCurrDir(currDirectory))
+            if (!pathOne && !pathTwo) {
+                console.error(("FS operation failed"))
+            } else {
+                copyAndRemove(pathOne, pathTwo)
+                showCurrDirectory(currDirectory)
+            }
         }
         if (oper === 'rm') {
-            remove(pathOne)
-            console.log(textCurrDir(currDirectory))
+            if (!pathOne) {
+                console.error(("FS operation failed"))
+            } else {
+                remove(pathOne)
+                showCurrDirectory(currDirectory)
+            }
         }
         if (oper === 'os' && pathOne === '--EOL') {
             eol()
-            console.log(textCurrDir(currDirectory))
+            showCurrDirectory(currDirectory)
         }
         if (oper === 'os' && pathOne === '--cpus') {
             getCpus()
-            console.log(textCurrDir(currDirectory))
+            showCurrDirectory(currDirectory)
         }
         if (oper === 'os' && pathOne === '--homedir') {
             console.log(homedir())
-            return console.log(textCurrDir(currDirectory))
+            return showCurrDirectory(currDirectory)
         }
         if (oper === 'os' && pathOne === '--username') {
             console.log(getUserName())
-            console.log(textCurrDir(currDirectory))
+            showCurrDirectory(currDirectory)
         }
         if (oper === 'os' && pathOne === '--architecture') {
             console.log(getArch())
-            console.log(textCurrDir(currDirectory))
+            showCurrDirectory(currDirectory)
         }
         if (oper === 'hash') {
-            calculateHash(pathOne)
-            console.log(textCurrDir(currDirectory))
+            if (!pathOne) {
+                console.error(("FS operation failed"))
+            } else {
+                calculateHash(pathOne)
+                showCurrDirectory(currDirectory)
+            }
         }
         if (oper === 'compress') {
-            compressFile(pathOne, pathTwo)
-            console.log(textCurrDir(currDirectory))
+            if (!pathOne || !pathTwo) {
+                console.error(("FS operation failed"))
+            } else {
+                compressFile(pathOne, pathTwo)
+                showCurrDirectory(currDirectory)
+            }
         }
         if (oper === 'decompress') {
-            decompressFile(pathOne, pathTwo)
-            console.log(textCurrDir(currDirectory))
+            if (!pathOne || !pathTwo) {
+                console.error(("FS operation failed"))
+            } else {
+                decompressFile(pathOne, pathTwo)
+                showCurrDirectory(currDirectory)
+            }
         }
+        /* if (oper !== '.exit' || oper !== 'ls' || oper !== 'cat' || oper !== 'add' ||
+            oper !== 'rn' || oper !== 'cp' || oper !== 'mv' || oper !== 'rm' ||
+            oper !== 'os' || oper !== 'hash' || oper !== 'compress' || oper !== 'decompress' || oper !== 'up' || oper !== '' || oper !== 'cd') {
+            console.error(("FS operation failed"))
+        } */
     })
+
+
 }
 
 await project()

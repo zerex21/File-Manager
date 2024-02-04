@@ -11,5 +11,11 @@ export const cat = async (fileRead) => {
     const input = createReadStream(fileRead, {
         encoding: 'utf-8'
     });
-    input.pipe(stdout);
+    input.on('error', (err) => {
+        if (err) console.error(("FS operation failed"))
+    })
+    input.on('data', (chunk) => {
+        console.log(chunk)
+    })
+
 };
