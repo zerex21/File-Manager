@@ -1,8 +1,7 @@
 import {
-    homedir, userInfo
+    userInfo
 } from 'os'
 
-export const getUserName = async () =>{
-    //const userName = homedir().split('')
+export const getUserName = async () => {
     console.log(userInfo())
 }
