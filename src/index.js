@@ -63,7 +63,6 @@ const project = async () => {
 
     let currDirectory = homedir()
     const userName = getUserName()
-    /* const textCurrDir = showCurrDirectory; */
 
     console.log(`Welcome to the File Manager, ${userName}!`);
     console.log(showCurrDirectory(currDirectory))
@@ -87,17 +86,29 @@ const project = async () => {
     });
 
 
-    /* while (asd) { */
     rl.on('line', text => {
 
         let [oper, pathOne, pathTwo] = text.split(' ')
 
+        if (oper !== '.exit' && oper !== 'ls' && oper !== 'cat' && oper !== 'add' &&
+            oper !== 'rn' && oper !== 'cp' && oper !== 'mv' && oper !== 'rm' &&
+            oper !== 'os' && oper !== 'hash' && oper !== 'compress' && oper !== 'decompress' && oper !== 'up' && oper !== '' && oper !== 'cd' /* && (oper === 'up' && pathOne || pathTwo) */ ) {
+            console.error(("FS operation failed"))
+        }
+        if ((oper === 'up' && pathOne || pathTwo)) {
+            console.error(("FS operation failed"))
+        }
+        if ((oper === 'ls' && pathOne || pathTwo)) {
+            console.error(("FS operation failed"))
+        } else if (oper === 'ls') {
+            let res = (handleInputs)
+            res(currDirectory)
+            setTimeout(() => {
+                showCurrDirectory(currDirectory)
+            }, 10)
+        }
 
-        /******************Проверить вызоть расположения текущего******* */
-
-
-
-        if (oper === 'up') {
+        if (oper === 'up' && !pathOne && !pathTwo) {
             currDirectory = moveUpDir(currDirectory)
             showCurrDirectory(currDirectory)
 
@@ -109,27 +120,15 @@ const project = async () => {
             res(currDirectory, pathOne).then(data => {
                 currDirectory = data
                 showCurrDirectory(currDirectory)
-                setTimeout(() => console.log('222222', currDirectory), 100)
+                /*  setTimeout(() => console.log('222222', currDirectory), 100) */
             })
         }
-
-
-
-
-
-
         if (oper === '.exit') {
             asd = false
             goodbyeUser()
             process.exit();
         }
-        if (oper === 'ls') {
-            let res = (handleInputs)
-            res(currDirectory)
-            setTimeout(() => {
-                showCurrDirectory(currDirectory)
-            }, 10)
-        }
+
         if (oper === 'cat') {
             if (!pathOne) {
                 console.error(("FS operation failed"))
@@ -222,11 +221,7 @@ const project = async () => {
                 showCurrDirectory(currDirectory)
             }
         }
-        /* if (oper !== '.exit' || oper !== 'ls' || oper !== 'cat' || oper !== 'add' ||
-            oper !== 'rn' || oper !== 'cp' || oper !== 'mv' || oper !== 'rm' ||
-            oper !== 'os' || oper !== 'hash' || oper !== 'compress' || oper !== 'decompress' || oper !== 'up' || oper !== '' || oper !== 'cd') {
-            console.error(("FS operation failed"))
-        } */
+
     })
 
 

@@ -9,17 +9,12 @@ import {
     access,
     exists
 } from 'fs';
-import {
-    lstat,
-    stat
-} from "node:fs/promises"
-
 
 
 let osSep = sep
 
 export const moveUpDir = (path) => {
-    console.log('modeUpDir', path)
+    /*  console.log('modeUpDir', path) */
 
     let newPath = path.split(osSep)
     if (newPath.length <= 2) {
@@ -51,7 +46,7 @@ export const moveToDir = async (path, dest = '') => {
                 if (err) {
                     console.error(("FS operation failed"))
                 } else {
-                    console.log('path2', dest)
+                    /* console.log('path2', dest) */
                     /* let newPath = join(path).split('')
                     newPath.pop() */
                     resolve(join(dest) /* newPath.join('') */ )
