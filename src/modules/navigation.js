@@ -14,16 +14,14 @@ import {
 let osSep = sep
 
 export const moveUpDir = (path) => {
-    console.log('upModerDir', path)
+
 
     let newPath = path.split(osSep)
     /* console.log('upModerDir', path) */
     if (newPath.length <= 2) {
         /* newPath.push(osSep) */
-        console.log('modeUpDir', newPath)
 
         newPath.pop()
-        console.log('asdasd', newPath + osSep)
         return newPath + osSep
     }
     /* console.log(path, newPath, newPath.length) */
