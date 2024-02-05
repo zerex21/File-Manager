@@ -1,14 +1,17 @@
 import {
+    copyFile,
     cp
 } from 'node:fs';
 
-export const copy = async (pathOne, pathTwo) => {
+import {
+    sep
+} from 'path'
 
-    cp(pathOne, pathTwo, {
-        recursive: true,
-        force: false,
-        errorOnExist: true
-    }, (err) => {
+let osSep = sep
+
+export const copy = async (currDirectory, pathOne, pathTwo) => {
+    console.log(pathOne, pathTwo)
+    copyFile(`${currDirectory}${osSep}${pathOne}`, `${pathTwo}${osSep}${pathOne}`, (err) => {
         if (err) console.error(("FS operation failed"));
     });
 };

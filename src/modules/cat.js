@@ -6,9 +6,14 @@ import {
     stdout
 } from 'node:process';
 
+import {
+    sep
+} from 'path'
 
-export const cat = async (fileRead) => {
-    const input = createReadStream(fileRead, {
+let osSep = sep
+
+export const cat = async (fileRead, currDirectory) => {
+    const input = createReadStream(`${currDirectory}${osSep}${fileRead}`, {
         encoding: 'utf-8'
     });
     input.on('error', (err) => {

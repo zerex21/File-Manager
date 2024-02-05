@@ -1,5 +1,11 @@
-import os from "node:os";
+import {
+    cpus,
+    EOL,
+    homedir,
+    userInfo,
+    arch
+} from "node:os";
 
-export let getArch = async () =>{
-    console.log(os.arch())
+export let getArch = () => {
+    return (arch())
 }

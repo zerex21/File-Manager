@@ -1,7 +1,8 @@
 import {
     userInfo
-} from 'os'
+} from "node:os";
+
 
 export const getUserName = async () => {
-    console.log(userInfo())
+    console.log(userInfo().username)
 }

@@ -2,9 +2,15 @@ import {
   appendFile
 } from 'node:fs';
 
-export const add = async (fileName) => {
-  appendFile(fileName, '', (err) => {
+import {
+  sep
+} from 'path'
+
+let osSep = sep
+
+export const add = async (fileName, currDirectory) => {
+  appendFile(`${currDirectory}${osSep}${fileName}`, '', (err) => {
     if (err) console.error(("FS operation failed"));
-    console.log('The "data to append" was appended to file!');
+    console.log('The file was added!');
   });
 }

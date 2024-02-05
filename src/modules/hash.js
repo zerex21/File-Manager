@@ -8,11 +8,16 @@ const {
     createHash
 } = await import('node:crypto');
 
+import {
+    sep
+} from 'path'
 
-export const calculateHash = async (fileForHash) => {
+let osSep = sep
+
+export const calculateHash = async (fileForHash, currDirectory) => {
 
     const hash = createHash('sha256');
-    const input = createReadStream(fileForHash);
+    const input = createReadStream(`${currDirectory}${osSep}${fileForHash}`);
     input.pipe(hash).setEncoding('hex').pipe(stdout);
 
 };

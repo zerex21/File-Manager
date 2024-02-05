@@ -90,16 +90,20 @@ const project = async () => {
 
         let [oper, pathOne, pathTwo] = text.split(' ')
 
-        if (oper !== '.exit' && oper !== 'ls' && oper !== 'cat' && oper !== 'add' &&
-            oper !== 'rn' && oper !== 'cp' && oper !== 'mv' && oper !== 'rm' &&
-            oper !== 'os' && oper !== 'hash' && oper !== 'compress' && oper !== 'decompress' && oper !== 'up' && oper !== '' && oper !== 'cd' /* && (oper === 'up' && pathOne || pathTwo) */ ) {
-            console.error(("FS operation failed"))
+        /*   if (oper !== '.exit' && oper !== 'ls' && oper !== 'cat' && oper !== 'add' &&
+              oper !== 'rn' && oper !== 'cp' && oper !== 'mv' && oper !== 'rm' &&
+              oper !== 'os' && oper !== 'hash' && oper !== 'compress' && oper !== 'decompress' && oper !== 'up' && oper !== '' && oper !== 'cd' ) {
+              showCurrDirectory(currDirectory)
+              console.error(("FS operation failed"))
+          } */
+
+        if ((oper === 'up' && (pathOne || pathTwo))) {
+            console.error(("FS operation failed1"))
+            showCurrDirectory(currDirectory)
         }
-        if ((oper === 'up' && pathOne || pathTwo)) {
-            console.error(("FS operation failed"))
-        }
-        if ((oper === 'ls' && pathOne || pathTwo)) {
-            console.error(("FS operation failed"))
+        if ((oper === 'ls' && (pathOne || pathTwo))) {
+            console.error(("FS operation failed2"))
+            showCurrDirectory(currDirectory)
         } else if (oper === 'ls') {
             let res = (handleInputs)
             res(currDirectory)
@@ -111,9 +115,7 @@ const project = async () => {
         if (oper === 'up' && !pathOne && !pathTwo) {
             currDirectory = moveUpDir(currDirectory)
             showCurrDirectory(currDirectory)
-
         }
-
         if (oper === 'cd') {
             /* currDirectory = 'F:/Games/' */
             let res = moveToDir
@@ -131,39 +133,45 @@ const project = async () => {
 
         if (oper === 'cat') {
             if (!pathOne) {
-                console.error(("FS operation failed"))
+                console.error(("FS operation failed3"))
+                showCurrDirectory(currDirectory)
             } else {
-                cat(pathOne)
+                cat(pathOne, currDirectory)
                 showCurrDirectory(currDirectory)
             }
         }
         if (oper === 'add') {
             if (!pathOne) {
-                console.error(("FS operation failed"))
+                console.error(("FS operation failed4"))
+                showCurrDirectory(currDirectory)
             } else {
-                add(pathOne)
+                add(pathOne, currDirectory)
                 showCurrDirectory(currDirectory)
             }
         }
+
         if (oper === 'rn') {
-            if (!pathOne && !pathTwo) {
-                console.error(("FS operation failed"))
+            if (!pathOne || !pathTwo) {
+                console.error(("FS operation failed!!!"))
+                /* showCurrDirectory(currDirectory) */
             } else {
-                rename(pathOne, pathTwo)
+                rename(currDirectory, pathOne, pathTwo, )
                 showCurrDirectory(currDirectory)
             }
         }
         if (oper === 'cp') {
             if (!pathOne && !pathTwo) {
-                console.error(("FS operation failed"))
+                console.error(("FS operation failed5"))
+                showCurrDirectory(currDirectory)
             } else {
-                copy(pathOne, pathTwo)
+                copy(currDirectory, pathOne, pathTwo, )
                 showCurrDirectory(currDirectory)
             }
         }
         if (oper === 'mv') {
             if (!pathOne && !pathTwo) {
-                console.error(("FS operation failed"))
+                console.error(("FS operation failed6"))
+                showCurrDirectory(currDirectory)
             } else {
                 copyAndRemove(pathOne, pathTwo)
                 showCurrDirectory(currDirectory)
@@ -171,9 +179,10 @@ const project = async () => {
         }
         if (oper === 'rm') {
             if (!pathOne) {
-                console.error(("FS operation failed"))
+                console.error(("FS operation failed7"))
+                showCurrDirectory(currDirectory)
             } else {
-                remove(pathOne)
+                remove(pathOne, currDirectory)
                 showCurrDirectory(currDirectory)
             }
         }
@@ -199,23 +208,26 @@ const project = async () => {
         }
         if (oper === 'hash') {
             if (!pathOne) {
-                console.error(("FS operation failed"))
+                console.error(("FS operation failed8"))
+                showCurrDirectory(currDirectory)
             } else {
-                calculateHash(pathOne)
+                calculateHash(pathOne, currDirectory)
                 showCurrDirectory(currDirectory)
             }
         }
         if (oper === 'compress') {
             if (!pathOne || !pathTwo) {
-                console.error(("FS operation failed"))
+                console.error(("FS operation failed9"))
+                showCurrDirectory(currDirectory)
             } else {
-                compressFile(pathOne, pathTwo)
+                compressFile(pathOne, pathTwo, currDirectory)
                 showCurrDirectory(currDirectory)
             }
         }
         if (oper === 'decompress') {
             if (!pathOne || !pathTwo) {
-                console.error(("FS operation failed"))
+                console.error(("FS operation failed11"))
+                showCurrDirectory(currDirectory)
             } else {
                 decompressFile(pathOne, pathTwo)
                 showCurrDirectory(currDirectory)
