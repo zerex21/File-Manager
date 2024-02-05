@@ -3,8 +3,13 @@ import {
 } from "node:fs"
 
 import {
+    lstat,
     stat
 } from "node:fs/promises"
+import {
+    sep
+} from 'path'
+let osSep = sep
 
 const myPathFile = `F:/` //Заменить на путь передающий
 
@@ -14,8 +19,6 @@ const structForListTable = (nameFile, typeFile) => {
         Type: typeFile
     })
 }
-
-
 
 
 let myArr = []
@@ -32,9 +35,9 @@ const getPath = (myPathFile) => {
 
 const submitData = async (files, myPathFile) => {
     await files.forEach(async (element) => {
-        let stats = await stat(`${myPathFile}/${element}`);
-        let res = ((stats.isFile()) ? structForListTable(`${myPathFile}/${element}`, 'file') :
-            structForListTable(`${myPathFile}/${element}`, 'directory')
+        let stats = await stat(`${myPathFile}${osSep}${element}`);
+        let res = ((stats.isDirectory()) ? structForListTable(`${myPathFile}${osSep}${element}`, 'directory') :
+            structForListTable(`${myPathFile}${osSep}${element}`, 'file')
         )
         myArr.push(res);
     });

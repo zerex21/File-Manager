@@ -54,6 +54,7 @@ import {
     decompressFile
 } from './modules/decompress.js';
 import {
+    moveToDir,
     moveUpDir
 } from './modules/navigation.js';
 
@@ -92,18 +93,25 @@ const project = async () => {
         let [oper, pathOne, pathTwo] = text.split(' ')
 
 
+        /******************Проверить вызоть расположения текущего******* */
 
 
 
         if (oper === 'up') {
             currDirectory = moveUpDir(currDirectory)
             showCurrDirectory(currDirectory)
+
         }
 
         if (oper === 'cd') {
-
+            /* currDirectory = 'F:/Games/' */
+            let res = moveToDir
+            res(currDirectory, pathOne).then(data => {
+                currDirectory = data
+                showCurrDirectory(currDirectory)
+                setTimeout(() => console.log('222222', currDirectory), 100)
+            })
         }
-
 
 
 
