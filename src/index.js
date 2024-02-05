@@ -215,6 +215,15 @@ const project = async () => {
                 showCurrDirectory(currDirectory)
             }
         }
+        if (oper === 'decompress') {
+            if (!pathOne || !pathTwo) {
+                console.error(("FS operation failed11"))
+                showCurrDirectory(currDirectory)
+            } else {
+                decompressFile(pathOne, pathTwo, currDirectory)
+                showCurrDirectory(currDirectory)
+            }
+        }
         if (oper === 'compress') {
             if (!pathOne || !pathTwo) {
                 console.error(("FS operation failed9"))
@@ -224,15 +233,7 @@ const project = async () => {
                 showCurrDirectory(currDirectory)
             }
         }
-        if (oper === 'decompress') {
-            if (!pathOne || !pathTwo) {
-                console.error(("FS operation failed11"))
-                showCurrDirectory(currDirectory)
-            } else {
-                decompressFile(pathOne, pathTwo)
-                showCurrDirectory(currDirectory)
-            }
-        }
+
 
     })
 
