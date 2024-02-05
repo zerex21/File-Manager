@@ -90,19 +90,19 @@ const project = async () => {
 
         let [oper, pathOne, pathTwo] = text.split(' ')
 
-        /*   if (oper !== '.exit' && oper !== 'ls' && oper !== 'cat' && oper !== 'add' &&
-              oper !== 'rn' && oper !== 'cp' && oper !== 'mv' && oper !== 'rm' &&
-              oper !== 'os' && oper !== 'hash' && oper !== 'compress' && oper !== 'decompress' && oper !== 'up' && oper !== '' && oper !== 'cd' ) {
-              showCurrDirectory(currDirectory)
-              console.error(("FS operation failed"))
-          } */
+        if (oper !== '.exit' && oper !== 'ls' && oper !== 'cat' && oper !== 'add' &&
+            oper !== 'rn' && oper !== 'cp' && oper !== 'mv' && oper !== 'rm' &&
+            oper !== 'os' && oper !== 'hash' && oper !== 'compress' && oper !== 'decompress' && oper !== 'up' && oper !== '' && oper !== 'cd') {
+            showCurrDirectory(currDirectory)
+            console.error(("FS operation failed"))
+        }
 
         if ((oper === 'up' && (pathOne || pathTwo))) {
-            console.error(("FS operation failed1"))
+            console.error(("FS operation failed"))
             showCurrDirectory(currDirectory)
         }
         if ((oper === 'ls' && (pathOne || pathTwo))) {
-            console.error(("FS operation failed2"))
+            console.error(("FS operation failed"))
             showCurrDirectory(currDirectory)
         } else if (oper === 'ls') {
             let res = (handleInputs)
@@ -133,7 +133,7 @@ const project = async () => {
 
         if (oper === 'cat') {
             if (!pathOne) {
-                console.error(("FS operation failed3"))
+                console.error(("FS operation failed"))
                 showCurrDirectory(currDirectory)
             } else {
                 cat(pathOne, currDirectory)
@@ -142,7 +142,7 @@ const project = async () => {
         }
         if (oper === 'add') {
             if (!pathOne) {
-                console.error(("FS operation failed4"))
+                console.error(("FS operation failed"))
                 showCurrDirectory(currDirectory)
             } else {
                 add(pathOne, currDirectory)
@@ -152,7 +152,7 @@ const project = async () => {
 
         if (oper === 'rn') {
             if (!pathOne || !pathTwo) {
-                console.error(("FS operation failed!!!"))
+                console.error(("FS operation failed"))
                 /* showCurrDirectory(currDirectory) */
             } else {
                 rename(currDirectory, pathOne, pathTwo, )
@@ -161,7 +161,7 @@ const project = async () => {
         }
         if (oper === 'cp') {
             if (!pathOne && !pathTwo) {
-                console.error(("FS operation failed5"))
+                console.error(("FS operation failed"))
                 showCurrDirectory(currDirectory)
             } else {
                 copy(currDirectory, pathOne, pathTwo, )
@@ -170,16 +170,16 @@ const project = async () => {
         }
         if (oper === 'mv') {
             if (!pathOne && !pathTwo) {
-                console.error(("FS operation failed6"))
+                console.error(("FS operation failed"))
                 showCurrDirectory(currDirectory)
             } else {
-                copyAndRemove(pathOne, pathTwo)
+                copyAndRemove(currDirectory, pathOne, pathTwo)
                 showCurrDirectory(currDirectory)
             }
         }
         if (oper === 'rm') {
             if (!pathOne) {
-                console.error(("FS operation failed7"))
+                console.error(("FS operation failed"))
                 showCurrDirectory(currDirectory)
             } else {
                 remove(pathOne, currDirectory)
@@ -208,7 +208,7 @@ const project = async () => {
         }
         if (oper === 'hash') {
             if (!pathOne) {
-                console.error(("FS operation failed8"))
+                console.error(("FS operation failed"))
                 showCurrDirectory(currDirectory)
             } else {
                 calculateHash(pathOne, currDirectory)
@@ -217,7 +217,7 @@ const project = async () => {
         }
         if (oper === 'decompress') {
             if (!pathOne || !pathTwo) {
-                console.error(("FS operation failed11"))
+                console.error(("FS operation failed"))
                 showCurrDirectory(currDirectory)
             } else {
                 decompressFile(pathOne, pathTwo, currDirectory)
@@ -226,7 +226,7 @@ const project = async () => {
         }
         if (oper === 'compress') {
             if (!pathOne || !pathTwo) {
-                console.error(("FS operation failed9"))
+                console.error(("FS operation failed"))
                 showCurrDirectory(currDirectory)
             } else {
                 compressFile(pathOne, pathTwo, currDirectory)
