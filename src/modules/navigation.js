@@ -14,11 +14,16 @@ import {
 let osSep = sep
 
 export const moveUpDir = (path) => {
-    /*  console.log('modeUpDir', path) */
+    console.log('upModerDir', path)
 
     let newPath = path.split(osSep)
+    /* console.log('upModerDir', path) */
     if (newPath.length <= 2) {
+        /* newPath.push(osSep) */
+        console.log('modeUpDir', newPath)
+
         newPath.pop()
+        console.log('asdasd', newPath + osSep)
         return newPath + osSep
     }
     /* console.log(path, newPath, newPath.length) */
@@ -34,9 +39,10 @@ export const moveToDir = async (path, dest = '') => {
                 if (err) {
                     console.error(("FS operation failed"))
                 } else {
-                    /*    let newPath = join(path, dest).split('')
-                       newPath.pop() */
-                    resolve(join(path, dest) /* newPath.join('') */ )
+                    let newPath = join(path, dest).split('')
+
+                    /* newPath.pop() */
+                    resolve( /* newPath  */ newPath.join(''))
                 }
             })
         })
@@ -49,7 +55,7 @@ export const moveToDir = async (path, dest = '') => {
                     /* console.log('path2', dest) */
                     /* let newPath = join(path).split('')
                     newPath.pop() */
-                    resolve(join(dest) /* newPath.join('') */ )
+                    resolve(join(`${dest}${osSep}`) /* newPath.join('') */ )
                 }
             })
         })

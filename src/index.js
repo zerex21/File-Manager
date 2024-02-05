@@ -122,6 +122,7 @@ const project = async () => {
             res(currDirectory, pathOne).then(data => {
                 currDirectory = data
                 showCurrDirectory(currDirectory)
+                return currDirectory
                 /*  setTimeout(() => console.log('222222', currDirectory), 100) */
             })
         }
